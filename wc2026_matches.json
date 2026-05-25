@@ -1,0 +1,722 @@
+[
+  {
+    "home_team": "Mexico",
+    "away_team": "South Africa",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-11T19:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Korea Republic",
+    "away_team": "Czechia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-12T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Canada",
+    "away_team": "Bosnia and Herzegovina",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-12T19:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "USA",
+    "away_team": "Paraguay",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-13T04:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Haiti",
+    "away_team": "Scotland",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-13T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Australia",
+    "away_team": "T\u00fcrkiye",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-13T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Brazil",
+    "away_team": "Morocco",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-14T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Qatar",
+    "away_team": "Switzerland",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-14T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "C\u00f4te d'Ivoire",
+    "away_team": "Ecuador",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-14T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Germany",
+    "away_team": "Cura\u00e7ao",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-14T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Netherlands",
+    "away_team": "Japan",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-15T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Sweden",
+    "away_team": "Tunisia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-15T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Saudi Arabia",
+    "away_team": "Uruguay",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-15T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Spain",
+    "away_team": "Cabo Verde",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-15T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "IR Iran",
+    "away_team": "New Zealand",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-16T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Belgium",
+    "away_team": "Egypt",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-16T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "France",
+    "away_team": "Senegal",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-16T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Iraq",
+    "away_team": "Norway",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-16T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Argentina",
+    "away_team": "Algeria",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-17T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Austria",
+    "away_team": "Jordan",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-17T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Ghana",
+    "away_team": "Panama",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-17T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "England",
+    "away_team": "Croatia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-17T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Portugal",
+    "away_team": "Congo DR",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-18T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Uzbekistan",
+    "away_team": "Colombia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-18T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Czechia",
+    "away_team": "South Africa",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-18T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Switzerland",
+    "away_team": "Bosnia and Herzegovina",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-18T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Canada",
+    "away_team": "Qatar",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-19T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Mexico",
+    "away_team": "Korea Republic",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-19T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Brazil",
+    "away_team": "Haiti",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-19T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Scotland",
+    "away_team": "Morocco",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-19T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "T\u00fcrkiye",
+    "away_team": "Paraguay",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-20T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "USA",
+    "away_team": "Australia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-20T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Germany",
+    "away_team": "C\u00f4te d'Ivoire",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-20T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Ecuador",
+    "away_team": "Cura\u00e7ao",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-20T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Netherlands",
+    "away_team": "Sweden",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-21T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Tunisia",
+    "away_team": "Japan",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-21T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Uruguay",
+    "away_team": "Cabo Verde",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-21T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Spain",
+    "away_team": "Saudi Arabia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-21T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Belgium",
+    "away_team": "IR Iran",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-22T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "New Zealand",
+    "away_team": "Egypt",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-22T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Norway",
+    "away_team": "Senegal",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-22T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "France",
+    "away_team": "Iraq",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-22T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Argentina",
+    "away_team": "Austria",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-23T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Jordan",
+    "away_team": "Algeria",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-23T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "England",
+    "away_team": "Ghana",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-23T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Panama",
+    "away_team": "Croatia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-23T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Portugal",
+    "away_team": "Uzbekistan",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Colombia",
+    "away_team": "Congo DR",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Scotland",
+    "away_team": "Brazil",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Morocco",
+    "away_team": "Haiti",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Switzerland",
+    "away_team": "Canada",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-25T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Bosnia and Herzegovina",
+    "away_team": "Qatar",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-25T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Czechia",
+    "away_team": "Mexico",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "South Africa",
+    "away_team": "Korea Republic",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-24T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Cura\u00e7ao",
+    "away_team": "C\u00f4te d'Ivoire",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Ecuador",
+    "away_team": "Germany",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Japan",
+    "away_team": "Sweden",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-25T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Tunisia",
+    "away_team": "Netherlands",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-25T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "T\u00fcrkiye",
+    "away_team": "USA",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Paraguay",
+    "away_team": "Australia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Norway",
+    "away_team": "France",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Senegal",
+    "away_team": "Iraq",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Egypt",
+    "away_team": "IR Iran",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-27T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "New Zealand",
+    "away_team": "Belgium",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-27T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Cabo Verde",
+    "away_team": "Saudi Arabia",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Uruguay",
+    "away_team": "Spain",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-26T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Panama",
+    "away_team": "England",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-28T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Croatia",
+    "away_team": "Ghana",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-28T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Algeria",
+    "away_team": "Austria",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-27T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Jordan",
+    "away_team": "Argentina",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-27T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Colombia",
+    "away_team": "Portugal",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-28T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Congo DR",
+    "away_team": "Uzbekistan",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-06-28T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 74",
+    "away_team": "Winner match 77",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-04T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 73",
+    "away_team": "Winner match 75",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-04T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 76",
+    "away_team": "Winner match 78",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-06T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 79",
+    "away_team": "Winner match 80",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-06T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 83",
+    "away_team": "Winner match 84",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-06T16:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 81",
+    "away_team": "Winner match 82",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-06T20:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 86",
+    "away_team": "Winner match 88",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-08T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  },
+  {
+    "home_team": "Winner match 85",
+    "away_team": "Winner match 87",
+    "competition": "FIFA World Cup 2026",
+    "match_date": "2026-07-08T01:00:00+00:00",
+    "home_score": null,
+    "away_score": null,
+    "status": "upcoming"
+  }
+]
