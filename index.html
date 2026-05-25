@@ -6,30 +6,32 @@
   <title>World Cup 2026 Predictions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8"></script>
   <style>
     :root {
-      --bg: #070d1a;
-      --bg-card: #0f1a2e;
-      --surface: #152238;
-      --border: #243552;
-      --text: #f0f4fc;
-      --muted: #8fa3c4;
-      --gold: #f4c430;
-      --gold-dim: rgba(244, 196, 48, 0.15);
-      --accent: #00e676;
-      --accent-dim: rgba(0, 230, 118, 0.12);
-      --danger: #ff5252;
-      --radius: 14px;
-      --nav-h: 64px;
+      --bg: #080a0f;
+      --bg-card: #0e1420;
+      --surface: #141c2e;
+      --border: #1e2a42;
+      --border-bright: #2a3a5c;
+      --text: #eef2ff;
+      --muted: #6b7fa3;
+      --gold: #fbbf24;
+      --gold-glow: rgba(251,191,36,0.18);
+      --gold-dim: rgba(251,191,36,0.10);
+      --green: #10b981;
+      --green-dim: rgba(16,185,129,0.12);
+      --danger: #f43f5e;
+      --radius: 16px;
+      --nav-h: 68px;
       --safe-b: env(safe-area-inset-bottom, 0px);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-family: "DM Sans", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100dvh;
@@ -37,337 +39,285 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Ambient background */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 100% 60% at 50% -10%, rgba(244, 196, 48, 0.12), transparent 55%),
-        radial-gradient(ellipse 80% 50% at 100% 80%, rgba(0, 230, 118, 0.06), transparent 50%);
+        radial-gradient(ellipse 120% 50% at 50% -5%, rgba(251,191,36,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 90%, rgba(16,185,129,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 30% at 10% 60%, rgba(99,102,241,0.05) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
 
     .hidden { display: none !important; }
 
-    /* Auth */
+    /* ── AUTH ── */
     #view-auth {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       padding: 2rem 1.25rem;
     }
 
     .auth-card {
-      width: 100%;
-      max-width: 400px;
+      width: 100%; max-width: 420px;
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-bright);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(251,191,36,0.06);
     }
 
     .wc-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--gold);
       background: var(--gold-dim);
-      border: 1px solid rgba(244, 196, 48, 0.35);
-      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(251,191,36,0.3);
+      padding: 0.4rem 0.85rem;
       border-radius: 999px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
-    .auth-card h1 {
-      font-size: 1.65rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.35rem;
+    .auth-logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.8rem; letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b, #ffffff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .auth-card .sub {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
+      color: var(--muted); font-size: 0.9rem;
+      margin-bottom: 2rem; line-height: 1.5;
     }
 
-    .field { margin-bottom: 1rem; }
+    .field { margin-bottom: 1.1rem; }
 
     .field label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      display: block; font-size: 0.72rem; font-weight: 600;
+      color: var(--muted); margin-bottom: 0.4rem;
+      text-transform: uppercase; letter-spacing: 0.07em;
     }
 
     .field input {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      width: 100%; padding: 0.9rem 1.1rem;
+      border-radius: 12px; border: 1px solid var(--border-bright);
       background: var(--surface);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 1rem;
+      color: var(--text); font-family: inherit; font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .field input:focus {
-      outline: none;
-      border-color: var(--gold);
+      outline: none; border-color: var(--gold);
       box-shadow: 0 0 0 3px var(--gold-dim);
     }
 
     .btn {
-      width: 100%;
-      padding: 0.9rem;
-      border: none;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.15s, opacity 0.15s;
+      width: 100%; padding: 1rem;
+      border: none; border-radius: 12px;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: transform 0.15s, opacity 0.15s;
     }
 
     .btn:active { transform: scale(0.98); }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--gold), #e6a800);
-      color: #0a0a0a;
-      margin-top: 0.25rem;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #080a0f; margin-top: 0.5rem;
+      box-shadow: 0 4px 24px rgba(251,191,36,0.35);
     }
 
+    .btn-primary:hover { opacity: 0.92; }
+
     .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
+      background: transparent; color: var(--muted);
+      margin-top: 0.75rem; font-size: 0.9rem;
     }
 
     .auth-msg {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      text-align: center;
-      min-height: 1.2em;
+      margin-top: 1rem; font-size: 0.85rem;
+      text-align: center; min-height: 1.2em;
     }
 
     .auth-msg.error { color: var(--danger); }
-    .auth-msg.ok { color: var(--accent); }
-
+    .auth-msg.ok { color: var(--green); }
     .auth-msg.loading { color: var(--gold); }
 
     #auth-boot-error {
-      margin-bottom: 1rem;
-      padding: 0.75rem;
+      margin-bottom: 1rem; padding: 0.8rem 1rem;
       border-radius: 10px;
-      background: rgba(255, 82, 82, 0.12);
-      border: 1px solid rgba(255, 82, 82, 0.35);
-      color: var(--danger);
-      font-size: 0.85rem;
+      background: rgba(244,63,94,0.10);
+      border: 1px solid rgba(244,63,94,0.3);
+      color: var(--danger); font-size: 0.85rem;
       display: none;
     }
 
     #auth-boot-error.visible { display: block; }
 
-    /* App shell */
+    /* ── APP SHELL ── */
     #view-app {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       min-height: 100dvh;
       padding-bottom: calc(var(--nav-h) + var(--safe-b) + 1rem);
     }
 
     .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(7, 13, 26, 0.92);
-      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(8,10,15,0.9);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 0.75rem;
     }
 
-    .top-bar h1 {
+    .top-bar-left { display: flex; align-items: center; gap: 0.75rem; }
+
+    .trophy-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold-dim), rgba(251,191,36,0.06));
+      border: 1px solid rgba(251,191,36,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
     }
 
-    .top-bar .user {
-      font-size: 0.75rem;
-      color: var(--muted);
-      max-width: 140px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .top-bar-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.3rem; letter-spacing: 0.06em;
+      color: var(--gold); line-height: 1;
+    }
+
+    .top-bar-sub {
+      font-size: 0.7rem; color: var(--muted);
+      max-width: 140px; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
     }
 
     .btn-signout {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      cursor: pointer;
-      font-family: inherit;
+      padding: 0.45rem 0.85rem; font-size: 0.72rem; font-weight: 600;
+      border-radius: 8px; border: 1px solid var(--border-bright);
+      background: var(--surface); color: var(--muted);
+      cursor: pointer; font-family: inherit;
+      transition: color 0.15s, border-color 0.15s;
     }
+
+    .btn-signout:hover { color: var(--text); border-color: var(--border-bright); }
 
     .page {
       padding: 1.25rem;
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto;
     }
 
+    .page-header { margin-bottom: 1.25rem; }
+
     .page-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 0.25rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem; letter-spacing: 0.05em;
+      line-height: 1; margin-bottom: 0.3rem;
     }
 
-    .page-desc {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-bottom: 1.25rem;
-    }
+    .page-desc { color: var(--muted); font-size: 0.85rem; }
 
     .banner {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
+      padding: 0.8rem 1rem; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;
     }
 
-    .banner.error { border-color: rgba(255, 82, 82, 0.4); color: var(--danger); }
+    .banner.error { border-color: rgba(244,63,94,0.4); color: var(--danger); }
 
-    /* Match cards */
-    .match-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      list-style: none;
-    }
+    /* ── MATCH CARDS ── */
+    .match-list { display: flex; flex-direction: column; gap: 1rem; list-style: none; }
 
     .match-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
 
-    .match-card.locked { opacity: 0.72; }
+    .match-card:not(.locked):hover { border-color: var(--border-bright); }
+    .match-card.locked { opacity: 0.75; }
+    .match-card.predicted { border-color: rgba(16,185,129,0.3); }
 
-    .match-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
+    .match-top {
+      padding: 0.85rem 1rem 0.75rem;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
     }
 
-    .match-meta {
-      font-size: 0.72rem;
-      color: var(--muted);
-      font-weight: 500;
+    .match-comp {
+      font-size: 0.68rem; font-weight: 600;
+      color: var(--muted); letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
+
+    .match-date { font-size: 0.68rem; color: var(--muted); }
 
     .pill {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-    }
-
-    .pill.open { background: var(--accent-dim); color: var(--accent); }
-    .pill.locked { background: rgba(143, 163, 196, 0.15); color: var(--muted); }
-    .pill.live { background: rgba(255, 107, 53, 0.15); color: #ff8c5a; }
-
-    .teams-row {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 0.5rem;
-      align-items: center;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .team-name {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.88rem;
-      font-weight: 700;
-      line-height: 1.25;
-      max-width: 100%;
-    }
-
-    .team-side:first-child .team-name {
-      flex-direction: row-reverse;
-      justify-content: flex-start;
-      text-align: right;
-    }
-
-    .team-side:last-child .team-name {
-      justify-content: flex-start;
-      text-align: left;
-    }
-
-    .team-flag {
-      font-size: 1.35rem;
-      line-height: 1;
+      font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 0.22rem 0.6rem; border-radius: 6px;
       flex-shrink: 0;
     }
 
-    .team-label {
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .pill.open { background: var(--green-dim); color: var(--green); }
+    .pill.locked { background: rgba(107,127,163,0.15); color: var(--muted); }
+    .pill.live { background: rgba(244,63,94,0.15); color: #fb7185; }
+    .pill.predicted { background: var(--green-dim); color: var(--green); }
+
+    /* Teams */
+    .teams-block {
+      padding: 1.25rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0.5rem; align-items: center;
     }
 
-    .score-mid {
-      font-size: 1.1rem;
-      font-weight: 800;
+    .team-side { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+
+    .team-flag-big { font-size: 2.2rem; line-height: 1; }
+
+    .team-name-txt {
+      font-size: 0.78rem; font-weight: 700;
+      text-align: center; line-height: 1.2;
+      color: var(--text);
+    }
+
+    .score-vs {
+      text-align: center;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.6rem; letter-spacing: 0.05em;
       color: var(--gold);
     }
 
-    .prediction-section {
-      margin-top: 0.25rem;
-      padding-top: 1rem;
+    /* Prediction area */
+    .prediction-area {
+      padding: 0 1rem 1rem;
       border-top: 1px solid var(--border);
     }
 
-    .prediction-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .pred-label {
+      padding: 0.65rem 0 0.6rem;
+      font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
       color: var(--muted);
-      margin-bottom: 0.65rem;
     }
 
-    .pick-row {
+    .pick-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 0.5rem;
@@ -375,851 +325,794 @@
     }
 
     .pick-btn {
-      padding: 0.7rem 0.35rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      padding: 0.8rem 0.4rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-bright);
       background: var(--surface);
       color: var(--text);
-      font-family: inherit;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-family: inherit; font-size: 0.72rem; font-weight: 700;
       cursor: pointer;
       transition: all 0.15s;
-      line-height: 1.2;
+      line-height: 1.3;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.2rem;
     }
 
-    .pick-btn span {
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
+    .pick-btn .pick-flag { font-size: 1.2rem; }
+    .pick-btn .pick-type { font-size: 0.62rem; color: var(--muted); font-weight: 600; }
 
     .pick-btn:hover:not(:disabled) {
       border-color: var(--gold);
+      background: var(--gold-dim);
       color: var(--gold);
+      transform: translateY(-1px);
     }
 
-    .pick-btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
+    .pick-btn:hover:not(:disabled) .pick-type { color: rgba(251,191,36,0.7); }
+
+    .pick-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .pick-btn.selected {
       background: var(--gold-dim);
       border-color: var(--gold);
       color: var(--gold);
-      box-shadow: 0 0 16px rgba(244, 196, 48, 0.2);
+      box-shadow: 0 0 20px rgba(251,191,36,0.2);
     }
 
-    .pick-btn.selected span { color: var(--gold); opacity: 0.85; }
+    .pick-btn.selected .pick-type { color: rgba(251,191,36,0.75); }
 
-    .submit-prediction {
+    /* Submit button */
+    .submit-btn {
       width: 100%;
-      padding: 0.95rem 1rem;
-      border: 2px solid rgba(244, 196, 48, 0.5);
+      padding: 1rem;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold), #e6a800);
-      color: #0a0a0a;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
+      border: none;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
-      box-shadow: 0 4px 20px rgba(244, 196, 48, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      transition: all 0.2s;
+      display: flex; align-items: center;
+      justify-content: center; gap: 0.5rem;
     }
 
-    .submit-prediction:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(244, 196, 48, 0.45);
-    }
-
-    .submit-prediction:active:not(:disabled) {
-      transform: translateY(0);
-    }
-
-    .submit-prediction:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-      border-color: var(--border);
+    .submit-btn.idle {
       background: var(--surface);
+      border: 1.5px solid var(--border-bright);
       color: var(--muted);
+      cursor: default;
     }
 
-    .submit-prediction.ready:not(:disabled) {
-      animation: submit-pulse 2s ease-in-out infinite;
+    .submit-btn.ready {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #080a0f;
+      box-shadow: 0 4px 24px rgba(251,191,36,0.4);
+      animation: pulse-gold 2s ease-in-out infinite;
     }
 
-    @keyframes submit-pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(244, 196, 48, 0.35); }
-      50% { box-shadow: 0 6px 32px rgba(244, 196, 48, 0.55); }
+    .submit-btn.ready:hover { transform: translateY(-1px); box-shadow: 0 6px 32px rgba(251,191,36,0.5); }
+    .submit-btn.ready:active { transform: translateY(0); }
+
+    .submit-btn.saved {
+      background: var(--green-dim);
+      border: 1.5px solid rgba(16,185,129,0.4);
+      color: var(--green);
+      cursor: default;
     }
 
-    .prediction-status {
+    .submit-btn.locked-btn {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 4px 24px rgba(251,191,36,0.4); }
+      50% { box-shadow: 0 6px 36px rgba(251,191,36,0.6); }
+    }
+
+    .pred-status {
       margin-top: 0.6rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-align: center;
-      color: var(--accent);
+      font-size: 0.75rem; font-weight: 600;
+      text-align: center; color: var(--muted);
+      min-height: 1.1em;
     }
 
-    .prediction-status.locked-note {
-      color: var(--muted);
-    }
+    .pred-status.saved-ok { color: var(--green); }
+    .pred-status.hint { color: var(--gold); }
 
-    /* Leaderboard */
-    .lb-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    /* ── LEADERBOARD ── */
+    .lb-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
     .lb-row {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.9rem 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.1rem;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
+      transition: border-color 0.2s;
     }
 
-    .lb-row.you { border-color: var(--gold); background: var(--gold-dim); }
+    .lb-row.you {
+      border-color: rgba(251,191,36,0.4);
+      background: var(--gold-dim);
+    }
 
     .lb-rank {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 34px; height: 34px;
+      border-radius: 10px;
       background: var(--surface);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 0.9rem;
+      flex-shrink: 0; color: var(--muted);
     }
 
-    .lb-row:nth-child(1) .lb-rank { background: linear-gradient(135deg, #ffd700, #f4c430); color: #0a0a0a; }
-    .lb-row:nth-child(2) .lb-rank { background: #c0c0c0; color: #0a0a0a; }
-    .lb-row:nth-child(3) .lb-rank { background: #cd7f32; color: #fff; }
+    .lb-row:nth-child(1) .lb-rank { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #080a0f; }
+    .lb-row:nth-child(2) .lb-rank { background: linear-gradient(135deg, #94a3b8, #64748b); color: #080a0f; }
+    .lb-row:nth-child(3) .lb-rank { background: linear-gradient(135deg, #cd7f32, #92400e); color: #fff; }
 
     .lb-info { flex: 1; min-width: 0; }
+
     .lb-name { font-weight: 700; font-size: 0.95rem; }
-    .lb-stats { font-size: 0.75rem; color: var(--muted); }
+    .lb-stats { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+
+    .lb-pts-wrap { text-align: right; }
 
     .lb-points {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--gold);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.8rem; letter-spacing: 0.04em;
+      color: var(--gold); line-height: 1;
     }
+
+    .lb-pts-label { font-size: 0.62rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
 
     .empty {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--muted);
+      text-align: center; padding: 3rem 1rem;
+      color: var(--muted); font-size: 0.9rem;
     }
 
-    /* Bottom nav */
+    /* Stats strip */
+    .stats-strip {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.5rem; margin-bottom: 1.25rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 0.75rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.6rem; letter-spacing: 0.04em;
+      color: var(--gold); line-height: 1;
+    }
+
+    .stat-lbl { font-size: 0.65rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+
+    /* ── NAV ── */
     .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
       height: calc(var(--nav-h) + var(--safe-b));
       padding-bottom: var(--safe-b);
-      background: rgba(15, 26, 46, 0.96);
-      backdrop-filter: blur(16px);
+      background: rgba(8,10,15,0.95);
+      backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
-      display: flex;
-      z-index: 20;
+      display: flex; z-index: 20;
     }
 
     .nav-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.2rem;
-      border: none;
-      background: none;
-      color: var(--muted);
-      font-family: inherit;
-      font-size: 0.68rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: color 0.15s;
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.25rem; border: none; background: none;
+      color: var(--muted); font-family: inherit;
+      font-size: 0.68rem; font-weight: 600;
+      cursor: pointer; transition: color 0.15s;
+      position: relative;
     }
 
     .nav-item svg { width: 22px; height: 22px; }
-
     .nav-item.active { color: var(--gold); }
 
+    .nav-item.active::after {
+      content: "";
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 32px; height: 2px;
+      background: var(--gold);
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* Toast */
     .toast {
       position: fixed;
       bottom: calc(var(--nav-h) + var(--safe-b) + 1rem);
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
+      left: 50%; transform: translateX(-50%) translateY(80px);
       background: var(--surface);
       border: 1px solid var(--gold);
       color: var(--gold);
-      padding: 0.65rem 1.1rem;
+      padding: 0.7rem 1.25rem;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      z-index: 50;
-      opacity: 0;
-      transition: all 0.3s;
-      pointer-events: none;
+      font-size: 0.85rem; font-weight: 600;
+      z-index: 50; opacity: 0;
+      transition: all 0.3s; pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(251,191,36,0.25);
     }
 
     .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* Group dividers */
+    .group-divider {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.12em;
+      color: var(--muted);
+      padding: 0.75rem 0 0.4rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .group-divider::after {
+      content: ""; flex: 1; height: 1px;
+      background: var(--border);
+    }
   </style>
 </head>
 <body>
-  <!-- AUTH -->
-  <div id="view-auth">
-    <div class="auth-card">
-      <div id="auth-boot-error" role="alert"></div>
-      <div class="wc-badge">🏆 FIFA World Cup 2026</div>
-      <h1 id="auth-title">Sign in</h1>
-      <p class="sub" id="auth-sub">Predict every match. Climb the leaderboard.</p>
-      <form id="auth-form">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" type="email" autocomplete="email" required placeholder="you@email.com" />
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="••••••••" />
-        </div>
-        <div class="field hidden" id="name-field">
-          <label for="display-name">Display name</label>
-          <input id="display-name" type="text" placeholder="Your league name" maxlength="32" />
-        </div>
-        <button type="submit" class="btn btn-primary" id="auth-submit">Sign in</button>
-      </form>
-      <button type="button" class="btn btn-ghost" id="auth-toggle">Create an account</button>
-      <p class="auth-msg" id="auth-msg"></p>
-    </div>
-  </div>
 
-  <!-- APP -->
-  <div id="view-app" class="hidden">
-    <header class="top-bar">
-      <div>
-        <h1>World Cup 2026</h1>
-        <div class="user" id="user-label"></div>
+<!-- AUTH -->
+<div id="view-auth">
+  <div class="auth-card">
+    <div id="auth-boot-error" role="alert"></div>
+    <div class="wc-badge">🏆 FIFA World Cup 2026</div>
+    <div class="auth-logo">Predict<br>2026</div>
+    <p class="sub" id="auth-sub">Predict every match. Climb the leaderboard. Beat your mates.</p>
+    <form id="auth-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" required placeholder="you@email.com" />
       </div>
-      <button type="button" class="btn-signout" id="btn-signout">Sign out</button>
-    </header>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="••••••••" />
+      </div>
+      <div class="field hidden" id="name-field">
+        <label for="display-name">Your name in the league</label>
+        <input id="display-name" type="text" placeholder="e.g. Jesus R" maxlength="32" />
+      </div>
+      <button type="submit" class="btn btn-primary" id="auth-submit">Sign in</button>
+    </form>
+    <button type="button" class="btn btn-ghost" id="auth-toggle">Create an account →</button>
+    <p class="auth-msg" id="auth-msg"></p>
+  </div>
+</div>
 
-    <section id="page-matches" class="page">
+<!-- APP -->
+<div id="view-app" class="hidden">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="trophy-icon">🏆</div>
+      <div>
+        <div class="top-bar-title">World Cup 2026</div>
+        <div class="top-bar-sub" id="user-label"></div>
+      </div>
+    </div>
+    <button type="button" class="btn-signout" id="btn-signout">Sign out</button>
+  </header>
+
+  <!-- MATCHES PAGE -->
+  <section id="page-matches" class="page">
+    <div class="page-header">
       <h2 class="page-title">Matches</h2>
-      <p class="page-desc">Pick home win, draw, or away win before kickoff.</p>
-      <div id="matches-banner" class="banner hidden"></div>
-      <ul id="match-list" class="match-list"></ul>
-    </section>
+      <p class="page-desc">Pick home win, draw, or away win — then hit Submit before kickoff.</p>
+    </div>
+    <div id="matches-banner" class="banner hidden"></div>
+    <ul id="match-list" class="match-list"></ul>
+  </section>
 
-    <section id="page-leaderboard" class="page hidden">
+  <!-- LEADERBOARD PAGE -->
+  <section id="page-leaderboard" class="page hidden">
+    <div class="page-header">
       <h2 class="page-title">Leaderboard</h2>
       <p class="page-desc">1 point per correct result after full time.</p>
-      <ul id="lb-list" class="lb-list"></ul>
-    </section>
+    </div>
+    <div class="stats-strip" id="stats-strip">
+      <div class="stat-card"><div class="stat-num" id="stat-players">–</div><div class="stat-lbl">Players</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-matches">–</div><div class="stat-lbl">Matches</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-decided">–</div><div class="stat-lbl">Decided</div></div>
+    </div>
+    <ul id="lb-list" class="lb-list"></ul>
+  </section>
 
-    <nav class="bottom-nav" aria-label="Main">
-      <button type="button" class="nav-item active" data-page="matches" aria-current="page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Matches
-      </button>
-      <button type="button" class="nav-item" data-page="leaderboard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21V10M12 21V3M16 21v-6"/></svg>
-        Leaderboard
-      </button>
-    </nav>
-  </div>
+  <nav class="bottom-nav" aria-label="Main">
+    <button type="button" class="nav-item active" data-page="matches" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Matches
+    </button>
+    <button type="button" class="nav-item" data-page="leaderboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21V10M12 21V3M16 21v-6"/></svg>
+      Leaderboard
+    </button>
+  </nav>
+</div>
 
-  <div class="toast" id="toast"></div>
+<div class="toast" id="toast"></div>
 
-  <script>
-    const SUPABASE_URL = "https://dhxboqlewvfmpovknvzs.supabase.co";
-    const SUPABASE_ANON_KEY = "sb_publishable_kT8-hGTFT8swJ5pw2-LVVA_32Kmyfnt";
+<script>
+const SUPABASE_URL = "https://dhxboqlewvfmpovknvzs.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_kT8-hGTFT8swJ5pw2-LVVA_32Kmyfnt";
 
-    const viewAuth = document.getElementById("view-auth");
-    const viewApp = document.getElementById("view-app");
-    const authForm = document.getElementById("auth-form");
-    const authTitle = document.getElementById("auth-title");
-    const authSub = document.getElementById("auth-sub");
-    const authSubmit = document.getElementById("auth-submit");
-    const authToggle = document.getElementById("auth-toggle");
-    const authMsg = document.getElementById("auth-msg");
-    const nameField = document.getElementById("name-field");
-    const matchList = document.getElementById("match-list");
-    const matchesBanner = document.getElementById("matches-banner");
-    const lbList = document.getElementById("lb-list");
-    const toastEl = document.getElementById("toast");
-    const authBootError = document.getElementById("auth-boot-error");
+const viewAuth = document.getElementById("view-auth");
+const viewApp = document.getElementById("view-app");
+const authForm = document.getElementById("auth-form");
+const authSub = document.getElementById("auth-sub");
+const authSubmit = document.getElementById("auth-submit");
+const authToggle = document.getElementById("auth-toggle");
+const authMsg = document.getElementById("auth-msg");
+const nameField = document.getElementById("name-field");
+const matchList = document.getElementById("match-list");
+const matchesBanner = document.getElementById("matches-banner");
+const lbList = document.getElementById("lb-list");
+const toastEl = document.getElementById("toast");
+const authBootError = document.getElementById("auth-boot-error");
 
-    let sb = null;
-    let isSignUp = false;
-    let currentUser = null;
-    let allMatches = [];
-    let myPredictions = new Map();
-    let pendingPicks = new Map();
-    let allPredictions = [];
-    let allProfiles = [];
+let sb = null;
+let isSignUp = false;
+let currentUser = null;
+let allMatches = [];
+let myPredictions = new Map();
+let pendingPicks = new Map();
+let allPredictions = [];
+let allProfiles = [];
 
-    function showToast(msg) {
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      setTimeout(() => toastEl.classList.remove("show"), 2600);
-    }
+function showToast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  setTimeout(() => toastEl.classList.remove("show"), 2600);
+}
 
-    function trim(s) {
-      return (s || "").trim();
-    }
+function trim(s) { return (s || "").trim(); }
 
-    function normalizeStatus(s) {
-      const x = trim(s).toLowerCase();
-      if (x === "live" || x === "in_play") return "live";
-      if (x === "finished" || x === "ft") return "finished";
-      return "upcoming";
-    }
+function normalizeStatus(s) {
+  const x = trim(s).toLowerCase();
+  if (x === "live" || x === "in_play") return "live";
+  if (x === "finished" || x === "ft") return "finished";
+  return "upcoming";
+}
 
-    function isWorldCup(m) {
-      return trim(m.competition) === "FIFA World Cup 2026";
-    }
+function isWorldCup(m) {
+  const c = trim(m.competition).toLowerCase();
+  return c.includes("world cup") || c.includes("fifa") || c.includes("wc") || c.includes("2026");
+}
 
-    function isLocked(match) {
-      const st = normalizeStatus(match.status);
-      if (st === "live" || st === "finished") return true;
-      if (!match.match_date) return false;
-      return new Date(match.match_date) <= new Date();
-    }
+function isLocked(match) {
+  const st = normalizeStatus(match.status);
+  if (st === "live" || st === "finished") return true;
+  if (!match.match_date) return false;
+  return new Date(match.match_date) <= new Date();
+}
 
-    function formatKickoff(iso) {
-      if (!iso) return "Kickoff TBC";
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return "Kickoff TBC";
-      return d.toLocaleString(undefined, {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
+function formatKickoff(iso) {
+  if (!iso) return "Kickoff TBC";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "Kickoff TBC";
+  return d.toLocaleString(undefined, {
+    weekday: "short", month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit",
+  });
+}
+
+const TEAM_FLAGS = {
+  "Algeria":"🇩🇿","Argentina":"🇦🇷","Australia":"🇦🇺","Austria":"🇦🇹",
+  "Belgium":"🇧🇪","Bosnia and Herzegovina":"🇧🇦","Brazil":"🇧🇷",
+  "Cabo Verde":"🇨🇻","Canada":"🇨🇦","Chile":"🇨🇱","Colombia":"🇨🇴",
+  "Congo DR":"🇨🇩","Costa Rica":"🇨🇷","Croatia":"🇭🇷","Curaçao":"🇨🇼",
+  "Czechia":"🇨🇿","Côte d'Ivoire":"🇨🇮","Ecuador":"🇪🇨","Egypt":"🇪🇬",
+  "England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","France":"🇫🇷","Germany":"🇩🇪","Ghana":"🇬🇭",
+  "Haiti":"🇭🇹","Honduras":"🇭🇳","IR Iran":"🇮🇷","Iraq":"🇮🇶",
+  "Japan":"🇯🇵","Jordan":"🇯🇴","Kenya":"🇰🇪","Korea Republic":"🇰🇷",
+  "Mexico":"🇲🇽","Morocco":"🇲🇦","Netherlands":"🇳🇱","New Zealand":"🇳🇿",
+  "Nigeria":"🇳🇬","Norway":"🇳🇴","Panama":"🇵🇦","Paraguay":"🇵🇾",
+  "Peru":"🇵🇪","Portugal":"🇵🇹","Qatar":"🇶🇦","Saudi Arabia":"🇸🇦",
+  "Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Senegal":"🇸🇳","Serbia":"🇷🇸",
+  "South Africa":"🇿🇦","Spain":"🇪🇸","Sweden":"🇸🇪","Switzerland":"🇨🇭",
+  "Tanzania":"🇹🇿","Tunisia":"🇹🇳","Türkiye":"🇹🇷","Turkey":"🇹🇷",
+  "USA":"🇺🇸","United States":"🇺🇸","Uruguay":"🇺🇾","Uzbekistan":"🇺🇿",
+  "Venezuela":"🇻🇪","Wales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+};
+
+function flagFor(teamName) {
+  const name = trim(teamName);
+  if (TEAM_FLAGS[name]) return TEAM_FLAGS[name];
+  if (/winner|match \d+/i.test(name)) return "🏆";
+  return "⚽";
+}
+
+function shortTeam(name) {
+  return trim(name).replace(/\s+FC$/i,"").replace(/\s+AFC$/i,"");
+}
+
+function getOutcome(match) {
+  if (match.home_score == null || match.away_score == null) return null;
+  if (match.home_score > match.away_score) return "home";
+  if (match.home_score < match.away_score) return "away";
+  return "draw";
+}
+
+function pickLabel(pick) {
+  return {home:"Home win", draw:"Draw", away:"Away win"}[pick] || pick;
+}
+
+function showBootError(message) {
+  authBootError.textContent = message;
+  authBootError.classList.add("visible");
+}
+
+function initSupabaseClient() {
+  const lib = window.supabase;
+  if (!lib || typeof lib.createClient !== "function") {
+    throw new Error("Supabase JS did not load. Open via http://localhost:8080 not as a file.");
+  }
+  return lib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true },
+  });
+}
+
+async function ensureProfile(user, displayName) {
+  const name = trim(displayName) || trim(user.email?.split("@")[0]) || "Player";
+  const { error } = await sb.from("profiles").upsert(
+    { id: user.id, display_name: name }, { onConflict: "id" }
+  );
+  if (error) throw error;
+}
+
+function setAuthMsg(message, type) {
+  authMsg.textContent = message;
+  authMsg.className = `auth-msg ${type}`;
+}
+
+function showApp(user) {
+  currentUser = user;
+  viewAuth.classList.add("hidden");
+  viewApp.classList.remove("hidden");
+  document.getElementById("user-label").textContent = user.email || "";
+  loadAppData();
+}
+
+function showAuth() {
+  currentUser = null;
+  viewApp.classList.add("hidden");
+  viewAuth.classList.remove("hidden");
+}
+
+authToggle.addEventListener("click", () => {
+  isSignUp = !isSignUp;
+  authSub.textContent = isSignUp
+    ? "Create your account to join the league."
+    : "Predict every match. Climb the leaderboard. Beat your mates.";
+  authSubmit.textContent = isSignUp ? "Create account" : "Sign in";
+  authToggle.textContent = isSignUp ? "← Already have an account? Sign in" : "Create an account →";
+  nameField.classList.toggle("hidden", !isSignUp);
+  document.getElementById("display-name").required = isSignUp;
+  authMsg.textContent = "";
+});
+
+async function handleAuthSubmit(e) {
+  e.preventDefault();
+  if (!sb) { setAuthMsg("App not ready — use http://localhost:8080", "error"); return; }
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const displayName = document.getElementById("display-name").value;
+  if (!email || !password) { setAuthMsg("Enter email and password.", "error"); return; }
+  if (isSignUp && !trim(displayName)) { setAuthMsg("Enter a display name.", "error"); return; }
+  authSubmit.disabled = true;
+  setAuthMsg(isSignUp ? "Creating your account…" : "Signing in…", "loading");
+  try {
+    if (isSignUp) {
+      const { data, error } = await sb.auth.signUp({
+        email, password,
+        options: { data: { display_name: trim(displayName) } },
       });
-    }
-
-    const TEAM_FLAGS = {
-      "Algeria": "🇩🇿",
-      "Argentina": "🇦🇷",
-      "Australia": "🇦🇺",
-      "Austria": "🇦🇹",
-      "Belgium": "🇧🇪",
-      "Bosnia and Herzegovina": "🇧🇦",
-      "Brazil": "🇧🇷",
-      "Cabo Verde": "🇨🇻",
-      "Canada": "🇨🇦",
-      "Colombia": "🇨🇴",
-      "Congo DR": "🇨🇩",
-      "Croatia": "🇭🇷",
-      "Curaçao": "🇨🇼",
-      "Czechia": "🇨🇿",
-      "Côte d'Ivoire": "🇨🇮",
-      "Ecuador": "🇪🇨",
-      "Egypt": "🇪🇬",
-      "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-      "France": "🇫🇷",
-      "Germany": "🇩🇪",
-      "Ghana": "🇬🇭",
-      "Haiti": "🇭🇹",
-      "IR Iran": "🇮🇷",
-      "Iraq": "🇮🇶",
-      "Japan": "🇯🇵",
-      "Jordan": "🇯🇴",
-      "Korea Republic": "🇰🇷",
-      "Mexico": "🇲🇽",
-      "Morocco": "🇲🇦",
-      "Netherlands": "🇳🇱",
-      "New Zealand": "🇳🇿",
-      "Norway": "🇳🇴",
-      "Panama": "🇵🇦",
-      "Paraguay": "🇵🇾",
-      "Portugal": "🇵🇹",
-      "Qatar": "🇶🇦",
-      "Saudi Arabia": "🇸🇦",
-      "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-      "Senegal": "🇸🇳",
-      "South Africa": "🇿🇦",
-      "Spain": "🇪🇸",
-      "Sweden": "🇸🇪",
-      "Switzerland": "🇨🇭",
-      "Tunisia": "🇹🇳",
-      "Türkiye": "🇹🇷",
-      "USA": "🇺🇸",
-      "Uruguay": "🇺🇾",
-      "Uzbekistan": "🇺🇿",
-    };
-
-    function flagFor(teamName) {
-      const name = trim(teamName);
-      if (TEAM_FLAGS[name]) return TEAM_FLAGS[name];
-      if (/^Winner match/i.test(name)) return "🏆";
-      return "⚽";
-    }
-
-    function shortTeam(name) {
-      return trim(name)
-        .replace(/\s+FC$/i, "")
-        .replace(/\s+AFC$/i, "");
-    }
-
-    function teamHtml(teamName) {
-      const flag = flagFor(teamName);
-      const label = shortTeam(teamName);
-      return `<span class="team-name"><span class="team-flag">${flag}</span><span class="team-label">${label}</span></span>`;
-    }
-
-    function getOutcome(match) {
-      if (match.home_score == null || match.away_score == null) return null;
-      if (match.home_score > match.away_score) return "home";
-      if (match.home_score < match.away_score) return "away";
-      return "draw";
-    }
-
-    function pickLabel(pick) {
-      return { home: "Home win", draw: "Draw", away: "Away win" }[pick] || pick;
-    }
-
-    function showBootError(message) {
-      authBootError.textContent = message;
-      authBootError.classList.add("visible");
-    }
-
-    function initSupabaseClient() {
-      const lib = window.supabase;
-      if (!lib || typeof lib.createClient !== "function") {
-        throw new Error(
-          "Supabase JS did not load. Open this page via http://localhost (not as a file:// URL)."
-        );
-      }
-      return lib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-        auth: {
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true,
-        },
-      });
-    }
-
-    async function ensureProfile(user, displayName) {
-      const name =
-        trim(displayName) ||
-        trim(user.email?.split("@")[0]) ||
-        "Player";
-      const { error } = await sb.from("profiles").upsert(
-        { id: user.id, display_name: name },
-        { onConflict: "id" }
-      );
       if (error) throw error;
-    }
-
-    function setAuthLoading(message) {
-      authMsg.textContent = message;
-      authMsg.className = "auth-msg loading";
-    }
-
-    function setAuthError(message) {
-      authMsg.textContent = message;
-      authMsg.className = "auth-msg error";
-    }
-
-    function setAuthOk(message) {
-      authMsg.textContent = message;
-      authMsg.className = "auth-msg ok";
-    }
-
-    function showApp(user) {
-      currentUser = user;
-      viewAuth.classList.add("hidden");
-      viewApp.classList.remove("hidden");
-      document.getElementById("user-label").textContent = user.email || "";
-      loadAppData();
-    }
-
-    function showAuth() {
-      currentUser = null;
-      viewApp.classList.add("hidden");
-      viewAuth.classList.remove("hidden");
-    }
-
-    authToggle.addEventListener("click", () => {
-      isSignUp = !isSignUp;
-      authTitle.textContent = isSignUp ? "Create account" : "Sign in";
-      authSub.textContent = isSignUp
-        ? "Sign up with email to join the league."
-        : "Predict every match. Climb the leaderboard.";
-      authSubmit.textContent = isSignUp ? "Sign up" : "Sign in";
-      authToggle.textContent = isSignUp ? "Already have an account? Sign in" : "Create an account";
-      nameField.classList.toggle("hidden", !isSignUp);
-      document.getElementById("display-name").required = isSignUp;
-      authMsg.textContent = isSignUp ? "Fill in the form and tap Sign up." : "";
-      authMsg.className = "auth-msg";
-    });
-
-    async function handleAuthSubmit(e) {
-      e.preventDefault();
-
-      if (!sb) {
-        setAuthError("App not ready — refresh the page or use a local server.");
-        return;
+      if (data.user) {
+        try { await ensureProfile(data.user, displayName); } catch(pe) { console.warn(pe); }
       }
-
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-      const displayName = document.getElementById("display-name").value;
-
-      if (!email || !password) {
-        setAuthError("Enter email and password.");
-        return;
+      if (data.session?.user) {
+        setAuthMsg("Welcome! Loading…", "ok");
+        showApp(data.session.user);
+      } else {
+        setAuthMsg("Account created! Check email to confirm, then sign in.", "ok");
       }
-
-      if (isSignUp && !trim(displayName)) {
-        setAuthError("Enter a display name for the leaderboard.");
-        return;
-      }
-
-      authSubmit.disabled = true;
-      setAuthLoading(isSignUp ? "Creating your account…" : "Signing in…");
-
-      try {
-        if (isSignUp) {
-          const { data, error } = await sb.auth.signUp({
-            email,
-            password,
-            options: {
-              data: { display_name: trim(displayName) },
-            },
-          });
-          if (error) throw error;
-
-          if (data.user) {
-            try {
-              await ensureProfile(data.user, displayName);
-            } catch (profileErr) {
-              console.warn("Profile setup:", profileErr);
-              setAuthOk(
-                "Account created! Profile setup failed — run supabase_setup.sql, then sign in again."
-              );
-              if (!data.session) return;
-            }
-          }
-
-          if (data.session?.user) {
-            setAuthOk("Welcome! Loading matches…");
-            showApp(data.session.user);
-          } else {
-            setAuthOk("Account created! Check your email to confirm, then sign in.");
-          }
-        } else {
-          const { data, error } = await sb.auth.signInWithPassword({ email, password });
-          if (error) throw error;
-          if (!data.user) throw new Error("Sign in failed — no user returned.");
-          setAuthOk("Signed in! Loading matches…");
-          showApp(data.user);
-        }
-      } catch (err) {
-        console.error("Auth error:", err);
-        setAuthError(err.message || "Something went wrong. Try again.");
-      } finally {
-        authSubmit.disabled = false;
-      }
-    }
-
-    authForm.addEventListener("submit", handleAuthSubmit);
-
-    document.getElementById("btn-signout").addEventListener("click", async () => {
-      if (sb) await sb.auth.signOut();
-      showAuth();
-    });
-
-    document.querySelectorAll(".nav-item").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const page = btn.dataset.page;
-        document.querySelectorAll(".nav-item").forEach((b) => {
-          b.classList.toggle("active", b.dataset.page === page);
-          b.setAttribute("aria-current", b.dataset.page === page ? "page" : null);
-        });
-        document.getElementById("page-matches").classList.toggle("hidden", page !== "matches");
-        document.getElementById("page-leaderboard").classList.toggle("hidden", page !== "leaderboard");
-        if (page === "leaderboard") renderLeaderboard();
-      });
-    });
-
-    async function savePrediction(matchId, pick) {
-      const { error } = await sb.from("predictions").upsert(
-        { user_id: currentUser.id, match_id: matchId, pick },
-        { onConflict: "user_id,match_id" }
-      );
-      if (error) throw error;
-      myPredictions.set(matchId, pick);
-      showToast(`Saved: ${pickLabel(pick)}`);
-      renderMatches();
-      if (!document.getElementById("page-leaderboard").classList.contains("hidden")) {
-        renderLeaderboard();
-      }
-    }
-
-    function renderMatches() {
-      const matches = allMatches.filter(isWorldCup).sort((a, b) => {
-        const da = a.match_date ? new Date(a.match_date).getTime() : Infinity;
-        const db = b.match_date ? new Date(b.match_date).getTime() : Infinity;
-        return da - db;
-      });
-
-      matchesBanner.classList.add("hidden");
-      matchList.innerHTML = "";
-
-      if (matches.length === 0) {
-        matchList.innerHTML =
-          '<li class="empty">No World Cup matches found. Run: python3 seed_world_cup.py</li>';
-        return;
-      }
-
-      for (const match of matches) {
-        const locked = isLocked(match);
-        const savedPick = myPredictions.get(match.id);
-        const pendingPick = pendingPicks.get(match.id) ?? savedPick ?? null;
-        const st = normalizeStatus(match.status);
-        const scored =
-          match.home_score != null && match.away_score != null;
-        const homeFlag = flagFor(match.home_team);
-        const awayFlag = flagFor(match.away_team);
-        const homeShort = shortTeam(match.home_team);
-        const awayShort = shortTeam(match.away_team);
-
-        const li = document.createElement("li");
-        li.className = `match-card${locked ? " locked" : ""}`;
-
-        li.innerHTML = `
-          <div class="match-head">
-            <span class="match-meta">${formatKickoff(match.match_date)} · ${trim(match.competition)}</span>
-            <span class="pill ${locked ? "locked" : st === "live" ? "live" : "open"}">${locked ? "Locked" : st === "live" ? "Live" : "Open"}</span>
-          </div>
-          <div class="teams-row">
-            <div class="team-side">${teamHtml(match.home_team)}</div>
-            <div class="score-mid">${scored ? `${match.home_score} – ${match.away_score}` : "vs"}</div>
-            <div class="team-side">${teamHtml(match.away_team)}</div>
-          </div>
-          <div class="prediction-section">
-            <div class="prediction-title">Your prediction</div>
-            <div class="pick-row">
-              <button type="button" class="pick-btn" data-pick="home" ${locked ? "disabled" : ""}>
-                Home win<span>${homeFlag} ${homeShort}</span>
-              </button>
-              <button type="button" class="pick-btn" data-pick="draw" ${locked ? "disabled" : ""}>
-                Draw<span>🤝 Tie</span>
-              </button>
-              <button type="button" class="pick-btn" data-pick="away" ${locked ? "disabled" : ""}>
-                Away win<span>${awayFlag} ${awayShort}</span>
-              </button>
-            </div>
-            <button type="button" class="submit-prediction" ${locked ? "disabled" : ""} aria-label="Submit prediction for this match">
-              ${locked ? "🔒 Predictions closed" : "✓ Submit Prediction"}
-            </button>
-            <div class="prediction-status ${locked ? "locked-note" : ""}"></div>
-          </div>
-        `;
-
-        const statusEl = li.querySelector(".prediction-status");
-        const submitBtn = li.querySelector(".submit-prediction");
-
-        if (locked) {
-          statusEl.textContent = savedPick
-            ? `Locked in: ${pickLabel(savedPick)}`
-            : "Kickoff passed — no prediction submitted";
-        } else if (savedPick) {
-          statusEl.textContent = `Saved: ${pickLabel(savedPick)}`;
-        } else {
-          statusEl.textContent = "Choose a result, then submit before kickoff";
-        }
-
-        const pickButtons = li.querySelectorAll(".pick-btn");
-        const syncSubmitState = () => {
-          const hasPick = Boolean(pendingPicks.get(match.id));
-          if (!locked) {
-            submitBtn.classList.toggle("ready", hasPick);
-            submitBtn.textContent = hasPick ? "✓ Submit Prediction" : "✓ Submit Prediction";
-          }
-        };
-
-        pickButtons.forEach((btn) => {
-          if (pendingPick === btn.dataset.pick) btn.classList.add("selected");
-          btn.addEventListener("click", () => {
-            if (locked) return;
-            pendingPicks.set(match.id, btn.dataset.pick);
-            pickButtons.forEach((b) => b.classList.toggle("selected", b === btn));
-            statusEl.textContent = `Selected: ${pickLabel(btn.dataset.pick)} — press Submit Prediction below`;
-            statusEl.classList.remove("locked-note");
-            syncSubmitState();
-          });
-        });
-
-        submitBtn.addEventListener("click", async () => {
-          if (locked) return;
-          const pick = pendingPicks.get(match.id);
-          if (!pick) {
-            showToast("Select Home win, Draw, or Away win first");
-            statusEl.textContent = "Pick a result above, then submit";
-            return;
-          }
-          submitBtn.disabled = true;
-          submitBtn.classList.remove("ready");
-          submitBtn.textContent = "Saving…";
-          try {
-            await savePrediction(match.id, pick);
-            statusEl.textContent = `Locked in: ${pickLabel(pick)}`;
-            submitBtn.textContent = "✓ Submit Prediction";
-            showToast("Prediction saved!");
-          } catch (err) {
-            showToast(err.message || "Could not save prediction");
-            statusEl.textContent = "Save failed — try again";
-          } finally {
-            if (!locked) {
-              submitBtn.disabled = false;
-              syncSubmitState();
-            }
-          }
-        });
-
-        syncSubmitState();
-
-        matchList.appendChild(li);
-      }
-    }
-
-    function computeScores() {
-      const matchById = Object.fromEntries(allMatches.map((m) => [m.id, m]));
-      const profileById = Object.fromEntries(allProfiles.map((p) => [p.id, p]));
-      const byUser = {};
-
-      for (const p of allPredictions) {
-        if (!byUser[p.user_id]) {
-          byUser[p.user_id] = { points: 0, correct: 0, total: 0 };
-        }
-        const match = matchById[p.match_id];
-        if (!match || normalizeStatus(match.status) !== "finished") continue;
-        const outcome = getOutcome(match);
-        if (!outcome) continue;
-        byUser[p.user_id].total += 1;
-        if (p.pick === outcome) {
-          byUser[p.user_id].correct += 1;
-          byUser[p.user_id].points += 1;
-        }
-      }
-
-      return Object.entries(byUser)
-        .map(([userId, stats]) => ({
-          userId,
-          name: profileById[userId]?.display_name || userId.slice(0, 8) + "…",
-          ...stats,
-        }))
-        .sort((a, b) => b.points - a.points || b.correct - a.correct);
-    }
-
-    function renderLeaderboard() {
-      const rows = computeScores();
-      lbList.innerHTML = "";
-
-      if (rows.length === 0) {
-        lbList.innerHTML =
-          '<li class="empty">No scored predictions yet. Finish matches to earn points.</li>';
-        return;
-      }
-
-      rows.forEach((row, i) => {
-        const li = document.createElement("li");
-        li.className = "lb-row" + (row.userId === currentUser?.id ? " you" : "");
-        li.innerHTML = `
-          <div class="lb-rank">${i + 1}</div>
-          <div class="lb-info">
-            <div class="lb-name">${row.name}${row.userId === currentUser?.id ? " (you)" : ""}</div>
-            <div class="lb-stats">${row.correct} correct · ${row.total} decided</div>
-          </div>
-          <div class="lb-points">${row.points}</div>
-        `;
-        lbList.appendChild(li);
-      });
-    }
-
-    async function loadAppData() {
-      matchesBanner.classList.add("hidden");
-      matchList.innerHTML = '<li class="empty">Loading matches…</li>';
-
-      const [matchesRes, predsRes, profilesRes, mineRes] = await Promise.all([
-        sb.from("matches").select("*").order("match_date", { ascending: true }),
-        sb.from("predictions").select("*"),
-        sb.from("profiles").select("*"),
-        sb.from("predictions").select("*").eq("user_id", currentUser.id),
-      ]);
-
-      if (matchesRes.error) {
-        matchList.innerHTML = `<li class="empty">${matchesRes.error.message}</li>`;
-        return;
-      }
-
-      allMatches = matchesRes.data || [];
-      allPredictions = predsRes.data || [];
-      allProfiles = profilesRes.data || [];
-      myPredictions = new Map((mineRes.data || []).map((p) => [p.match_id, p.pick]));
-
-      renderMatches();
-      renderLeaderboard();
-    }
-
-    function boot() {
-      try {
-        if (location.protocol === "file:") {
-          showBootError(
-            "Opened as a file — auth may not work. Run: python3 -m http.server 8080 then open http://localhost:8080"
-          );
-        }
-        sb = initSupabaseClient();
-      } catch (err) {
-        console.error(err);
-        showBootError(err.message);
-        authSubmit.disabled = true;
-        return;
-      }
-
-      sb.auth.onAuthStateChange((event, session) => {
-        if (event === "SIGNED_OUT") {
-          showAuth();
-          return;
-        }
-        if (session?.user && (event === "SIGNED_IN" || event === "INITIAL_SESSION")) {
-          showApp(session.user);
-        }
-      });
-
-      sb.auth.getSession().then(({ data, error }) => {
-        if (error) {
-          setAuthError(error.message);
-          return;
-        }
-        if (data.session?.user) showApp(data.session.user);
-        else showAuth();
-      });
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", boot);
     } else {
-      boot();
+      const { data, error } = await sb.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      if (!data.user) throw new Error("Sign in failed.");
+      setAuthMsg("Signed in! Loading…", "ok");
+      showApp(data.user);
     }
-  </script>
+  } catch(err) {
+    setAuthMsg(err.message || "Something went wrong.", "error");
+  } finally {
+    authSubmit.disabled = false;
+  }
+}
+
+authForm.addEventListener("submit", handleAuthSubmit);
+
+document.getElementById("btn-signout").addEventListener("click", async () => {
+  if (sb) await sb.auth.signOut();
+  showAuth();
+});
+
+document.querySelectorAll(".nav-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const page = btn.dataset.page;
+    document.querySelectorAll(".nav-item").forEach(b => {
+      b.classList.toggle("active", b.dataset.page === page);
+      b.setAttribute("aria-current", b.dataset.page === page ? "page" : null);
+    });
+    document.getElementById("page-matches").classList.toggle("hidden", page !== "matches");
+    document.getElementById("page-leaderboard").classList.toggle("hidden", page !== "leaderboard");
+    if (page === "leaderboard") renderLeaderboard();
+  });
+});
+
+async function savePrediction(matchId, pick) {
+  const { error } = await sb.from("predictions").upsert(
+    { user_id: currentUser.id, match_id: matchId, pick },
+    { onConflict: "user_id,match_id" }
+  );
+  if (error) throw error;
+  myPredictions.set(matchId, pick);
+}
+
+function renderMatches() {
+  const matches = allMatches
+    .filter(m => isWorldCup(m) || allMatches.every(x => !isWorldCup(x)))
+    .sort((a, b) => {
+      const da = a.match_date ? new Date(a.match_date).getTime() : Infinity;
+      const db = b.match_date ? new Date(b.match_date).getTime() : Infinity;
+      return da - db;
+    });
+
+  matchesBanner.classList.add("hidden");
+  matchList.innerHTML = "";
+
+  if (matches.length === 0) {
+    matchList.innerHTML = '<li class="empty">No matches found. Run seed_world_cup.py to load fixtures.</li>';
+    return;
+  }
+
+  let lastGroup = null;
+
+  for (const match of matches) {
+    const locked = isLocked(match);
+    const savedPick = myPredictions.get(match.id);
+    const st = normalizeStatus(match.status);
+    const scored = match.home_score != null && match.away_score != null;
+
+    // Group dividers by competition
+    const group = trim(match.competition);
+    if (group !== lastGroup) {
+      lastGroup = group;
+      const divider = document.createElement("li");
+      divider.className = "group-divider";
+      divider.textContent = group || "Matches";
+      matchList.appendChild(divider);
+    }
+
+    const li = document.createElement("li");
+    li.className = `match-card${locked ? " locked" : ""}${savedPick ? " predicted" : ""}`;
+
+    const pillClass = locked ? "locked" : st === "live" ? "live" : savedPick ? "predicted" : "open";
+    const pillText = locked ? "Locked" : st === "live" ? "🔴 Live" : savedPick ? "✓ Predicted" : "Open";
+
+    li.innerHTML = `
+      <div class="match-top">
+        <div>
+          <div class="match-comp">${trim(match.competition)}</div>
+          <div class="match-date">${formatKickoff(match.match_date)}</div>
+        </div>
+        <span class="pill ${pillClass}">${pillText}</span>
+      </div>
+      <div class="teams-block">
+        <div class="team-side">
+          <div class="team-flag-big">${flagFor(match.home_team)}</div>
+          <div class="team-name-txt">${shortTeam(match.home_team)}</div>
+        </div>
+        <div class="score-vs">${scored ? `${match.home_score}–${match.away_score}` : "VS"}</div>
+        <div class="team-side">
+          <div class="team-flag-big">${flagFor(match.away_team)}</div>
+          <div class="team-name-txt">${shortTeam(match.away_team)}</div>
+        </div>
+      </div>
+      <div class="prediction-area">
+        <div class="pred-label">Your prediction</div>
+        <div class="pick-grid">
+          <button type="button" class="pick-btn" data-pick="home" ${locked ? "disabled" : ""}>
+            <span class="pick-flag">${flagFor(match.home_team)}</span>
+            <strong>${shortTeam(match.home_team)}</strong>
+            <span class="pick-type">Home win</span>
+          </button>
+          <button type="button" class="pick-btn" data-pick="draw" ${locked ? "disabled" : ""}>
+            <span class="pick-flag">🤝</span>
+            <strong>Draw</strong>
+            <span class="pick-type">Tie</span>
+          </button>
+          <button type="button" class="pick-btn" data-pick="away" ${locked ? "disabled" : ""}>
+            <span class="pick-flag">${flagFor(match.away_team)}</span>
+            <strong>${shortTeam(match.away_team)}</strong>
+            <span class="pick-type">Away win</span>
+          </button>
+        </div>
+        <button type="button" class="submit-btn ${locked ? "locked-btn" : savedPick ? "saved" : "idle"}" ${locked ? "disabled" : ""}>
+          ${locked ? "🔒 Predictions closed" : savedPick ? `✓ Saved: ${pickLabel(savedPick)}` : "Select a result above"}
+        </button>
+        <div class="pred-status ${savedPick ? "saved-ok" : ""}">
+          ${locked && savedPick ? `Your pick: ${pickLabel(savedPick)}` : locked ? "Kickoff passed — no prediction" : savedPick ? "Prediction saved ✓" : "Pick a result and tap Submit"}
+        </div>
+      </div>
+    `;
+
+    const pickBtns = li.querySelectorAll(".pick-btn");
+    const submitBtn = li.querySelector(".submit-btn");
+    const statusEl = li.querySelector(".pred-status");
+
+    // Mark saved pick
+    if (savedPick) {
+      pickBtns.forEach(b => { if (b.dataset.pick === savedPick) b.classList.add("selected"); });
+    }
+
+    // Track pending selection
+    let pendingPick = pendingPicks.get(match.id) || savedPick || null;
+
+    pickBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (locked) return;
+        pendingPick = btn.dataset.pick;
+        pendingPicks.set(match.id, pendingPick);
+        pickBtns.forEach(b => b.classList.toggle("selected", b === btn));
+        submitBtn.className = "submit-btn ready";
+        submitBtn.textContent = `🏆 Submit: ${pickLabel(pendingPick)}`;
+        statusEl.textContent = "Tap Submit to lock in your prediction";
+        statusEl.className = "pred-status hint";
+      });
+    });
+
+    submitBtn.addEventListener("click", async () => {
+      if (locked) return;
+      if (!pendingPick) {
+        showToast("Pick a result first!");
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Saving…";
+      submitBtn.className = "submit-btn idle";
+      try {
+        await savePrediction(match.id, pendingPick);
+        submitBtn.className = "submit-btn saved";
+        submitBtn.textContent = `✓ Saved: ${pickLabel(pendingPick)}`;
+        statusEl.textContent = "Prediction saved ✓";
+        statusEl.className = "pred-status saved-ok";
+        li.classList.add("predicted");
+        showToast(`Prediction saved: ${pickLabel(pendingPick)} 🎯`);
+      } catch(err) {
+        submitBtn.className = "submit-btn ready";
+        submitBtn.textContent = `🏆 Submit: ${pickLabel(pendingPick)}`;
+        statusEl.textContent = "Save failed — try again";
+        statusEl.className = "pred-status";
+        showToast("Could not save — try again");
+      } finally {
+        if (!locked) submitBtn.disabled = false;
+      }
+    });
+
+    matchList.appendChild(li);
+  }
+}
+
+function computeScores() {
+  const matchById = Object.fromEntries(allMatches.map(m => [m.id, m]));
+  const profileById = Object.fromEntries(allProfiles.map(p => [p.id, p]));
+  const byUser = {};
+  for (const p of allPredictions) {
+    if (!byUser[p.user_id]) byUser[p.user_id] = { points:0, correct:0, total:0 };
+    const match = matchById[p.match_id];
+    if (!match || normalizeStatus(match.status) !== "finished") continue;
+    const outcome = getOutcome(match);
+    if (!outcome) continue;
+    byUser[p.user_id].total += 1;
+    if (p.pick === outcome) {
+      byUser[p.user_id].correct += 1;
+      byUser[p.user_id].points += 1;
+    }
+  }
+  return Object.entries(byUser).map(([userId, stats]) => ({
+    userId,
+    name: profileById[userId]?.display_name || userId.slice(0,8)+"…",
+    ...stats,
+  })).sort((a,b) => b.points - a.points || b.correct - a.correct);
+}
+
+function renderLeaderboard() {
+  const rows = computeScores();
+  const finished = allMatches.filter(m => normalizeStatus(m.status) === "finished").length;
+  const players = new Set(allPredictions.map(p => p.user_id)).size;
+
+  document.getElementById("stat-players").textContent = players || allProfiles.length || "–";
+  document.getElementById("stat-matches").textContent = allMatches.filter(isWorldCup).length || allMatches.length || "–";
+  document.getElementById("stat-decided").textContent = finished || "0";
+
+  lbList.innerHTML = "";
+  if (rows.length === 0) {
+    lbList.innerHTML = '<li class="empty">No scored predictions yet — results will appear after matches finish.</li>';
+    return;
+  }
+  rows.forEach((row, i) => {
+    const li = document.createElement("li");
+    li.className = "lb-row" + (row.userId === currentUser?.id ? " you" : "");
+    li.innerHTML = `
+      <div class="lb-rank">${i+1}</div>
+      <div class="lb-info">
+        <div class="lb-name">${row.name}${row.userId === currentUser?.id ? " 👈 you" : ""}</div>
+        <div class="lb-stats">${row.correct} correct · ${row.total} decided</div>
+      </div>
+      <div class="lb-pts-wrap">
+        <div class="lb-points">${row.points}</div>
+        <div class="lb-pts-label">pts</div>
+      </div>
+    `;
+    lbList.appendChild(li);
+  });
+}
+
+async function loadAppData() {
+  matchesBanner.classList.add("hidden");
+  matchList.innerHTML = '<li class="empty">Loading matches…</li>';
+  const [matchesRes, predsRes, profilesRes, mineRes] = await Promise.all([
+    sb.from("matches").select("*").order("match_date", { ascending:true }),
+    sb.from("predictions").select("*"),
+    sb.from("profiles").select("*"),
+    sb.from("predictions").select("*").eq("user_id", currentUser.id),
+  ]);
+  if (matchesRes.error) {
+    matchList.innerHTML = `<li class="empty">${matchesRes.error.message}</li>`;
+    return;
+  }
+  allMatches = matchesRes.data || [];
+  allPredictions = predsRes.data || [];
+  allProfiles = profilesRes.data || [];
+  myPredictions = new Map((mineRes.data || []).map(p => [p.match_id, p.pick]));
+  renderMatches();
+}
+
+function boot() {
+  try {
+    if (location.protocol === "file:") {
+      showBootError("Open via http://localhost:8080 — run: python3 -m http.server 8080");
+    }
+    sb = initSupabaseClient();
+  } catch(err) {
+    console.error(err);
+    showBootError(err.message);
+    authSubmit.disabled = true;
+    return;
+  }
+  sb.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_OUT") { showAuth(); return; }
+    if (session?.user && (event === "SIGNED_IN" || event === "INITIAL_SESSION")) showApp(session.user);
+  });
+  sb.auth.getSession().then(({ data, error }) => {
+    if (error) { setAuthMsg(error.message, "error"); return; }
+    if (data.session?.user) showApp(data.session.user);
+    else showAuth();
+  });
+}
+
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+else boot();
+</script>
 </body>
 </html>
